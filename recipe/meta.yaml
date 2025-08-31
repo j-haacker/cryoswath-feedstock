@@ -38,6 +38,7 @@ requirements:
     - pyarrow
     - pyogrio
     - pyproj
+    - pystac-client
     - pytables
     - python-dateutil
     - rasterio
