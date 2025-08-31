@@ -1,5 +1,5 @@
 {% set name = "cryoswath" %}
-{% set version = "0.2.2.post3" %}
+{% set version = "0.2.4" %}
 {% set python_min = "3.11" %}
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/cryoswath-{{ version }}.tar.gz
-  sha256: ef605c35f7d29ff7639a419e032e19344496062b5f905563072d3c75c17096b4
+  sha256: 5cc96afcbc5db0ab761567787e4a06b1a6bc0194778aa277fcce259505812249
 
 build:
   entry_points:
@@ -38,6 +38,7 @@ requirements:
     - pyarrow
     - pyogrio
     - pyproj
+    - pystac-client
     - pytables
     - python-dateutil
     - rasterio
@@ -45,6 +46,7 @@ requirements:
     - scikit-learn
     - scipy
     - shapely
+    - stackstac
     - statsmodels
     - tqdm
     - xarray <2025
