@@ -46,6 +46,7 @@ requirements:
     - scikit-learn
     - scipy
     - shapely
+    - stackstac
     - statsmodels
     - tqdm
     - xarray <2025
