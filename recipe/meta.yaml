@@ -25,12 +25,12 @@ build:
 requirements:
   host:
     - python {{ python_min }}
-    - flit_core >=3.11,<4
+    - flit-core >=3.2
     - pip
   run:
     - python >={{ python_min }}
     - bottleneck
-    - dask
+    - dask-core
     - defusedxml
     - earthaccess >=0.18
     - geopandas >=1.0.1
@@ -38,14 +38,15 @@ requirements:
     - h5netcdf
     - h5py
     - keyring
-    - matplotlib
+    - matplotlib-base
     - numpy
     - packaging
     - pandas >=2,<3
     - pyarrow
     - pyogrio
     - pyproj
-    - pystac_client
+    - pystac-client
+    - pytables
     - python-dateutil
     - rasterio
     - rioxarray
@@ -54,9 +55,8 @@ requirements:
     - shapely
     - stackstac
     - statsmodels
-    - tables
     - tqdm
-    - xarray >=2026.3
+    - xarray >=2025.3
     - zarr
 
 test:
