@@ -1,6 +1,6 @@
 {% set name = "cryoswath" %}
 {% set version = "0.2.6" %}
-{% set python_min = "3.11" %}
+{% set python_min = "3.12" %}
 
 package:
   name: {{ name|lower }}
@@ -12,9 +12,12 @@ source:
 
 build:
   entry_points:
-    - cryoswath-init = cryoswath.misc:init_project
+    - cryoswath-init = cryoswath.misc:init_project_cli
+    - cryoswath-download-rgi = cryoswath.misc:download_rgi_cli
+    - cryoswath-update-keyring = cryoswath.misc:update_keyring_cli
     - cryoswath-update-netrc = cryoswath.misc:update_netrc_cli
-    - cryoswath-update-tracks = cryoswath.misc:update_track_database
+    - cryoswath-update-tracks = cryoswath.misc:update_track_database_cli
+    - cryoswath = cryoswath.misc:cryoswath_cli
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 0
@@ -22,27 +25,27 @@ build:
 requirements:
   host:
     - python {{ python_min }}
-    - flit-core >=3.2
+    - flit_core >=3.11,<4
     - pip
   run:
     - python >={{ python_min }}
     - bottleneck
-    - dask-core
+    - dask
     - defusedxml
+    - earthaccess >=0.18
     - geopandas >=1.0.1
     - gitpython
     - h5netcdf
     - h5py
     - keyring
-    - matplotlib-base
+    - matplotlib
     - numpy
     - packaging
     - pandas >=2,<3
     - pyarrow
     - pyogrio
     - pyproj
-    - pystac-client
-    - pytables
+    - pystac_client
     - python-dateutil
     - rasterio
     - rioxarray
@@ -51,8 +54,9 @@ requirements:
     - shapely
     - stackstac
     - statsmodels
+    - tables
     - tqdm
-    - xarray >=2025.3
+    - xarray >=2026.3
     - zarr
 
 test:
