@@ -1,6 +1,6 @@
 {% set name = "cryoswath" %}
-{% set version = "0.2.5.post1" %}
-{% set python_min = "3.11" %}
+{% set version = "0.2.6" %}
+{% set python_min = "3.12" %}
 
 package:
   name: {{ name|lower }}
@@ -8,13 +8,16 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/cryoswath-{{ version }}.tar.gz
-  sha256: f226de7557e9fd21c9b64746b1db829f09b6ba665726a1b25682b9fe22ae8c27
+  sha256: 8f75b093908b889e73916331cc14c8ea442b5388753cc567cd52a6ba723de9ca
 
 build:
   entry_points:
-    - cryoswath-init = cryoswath.misc:init_project
+    - cryoswath-init = cryoswath.misc:init_project_cli
+    - cryoswath-download-rgi = cryoswath.misc:download_rgi_cli
+    - cryoswath-update-keyring = cryoswath.misc:update_keyring_cli
     - cryoswath-update-netrc = cryoswath.misc:update_netrc_cli
-    - cryoswath-update-tracks = cryoswath.misc:update_track_database
+    - cryoswath-update-tracks = cryoswath.misc:update_track_database_cli
+    - cryoswath = cryoswath.misc:cryoswath_cli
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 1
@@ -29,6 +32,7 @@ requirements:
     - bottleneck
     - dask-core
     - defusedxml
+    - earthaccess >=0.18
     - geopandas >=1.0.1
     - gitpython
     - h5netcdf
